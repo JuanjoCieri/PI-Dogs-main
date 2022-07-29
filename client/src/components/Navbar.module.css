@@ -1,0 +1,22 @@
+.nav {
+    padding: 20px;
+    background-color: #B99683;
+    /* box-shadow: 15px 15px 15px rgb(130, 130, 130); */
+    position: fixed;
+    width: 100%;
+    left: 0;
+}
+
+.navAll {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    border: none;
+    background: none;
+    color: #552E1B;
+    font-size: 2rem;
+    cursor: pointer;
+    /* font-family: 'Bebas Neue', cursive; */
+}

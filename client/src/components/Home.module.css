@@ -1,0 +1,40 @@
+.all {
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cards{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.filters {
+    /* padding-top: 2rem; */
+    /* display: flex;
+    justify-content: center; */
+}
+
+.searchBar {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.cardd {
+    text-decoration: none;
+}
+
+.nav {
+    position: fixed;
+    /* margin-bottom: 30%; */
+}
+
+.filtersBtn {
+    background-color: #E6B325;
+    /* display: flex;
+    align-items: center; */
+}

@@ -1,0 +1,79 @@
+.all {
+    position: relative;
+    height: 660px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* overflow: hidden; */
+}
+
+.tittle {
+    position: absolute;
+width: 608px;
+height: 228px;
+left: 356px;
+right: 196px;
+top: 200px;
+font-family: 'Inter';
+font-style: italic;
+font-weight: 900;
+font-size: 200px;
+line-height: 242px;
+color: #BD5621;
+}
+
+.image {
+    position: absolute;
+    display: flex;
+    
+width: 515px;
+height: 474px;
+left: 388px;
+right: 317;
+top: 186px;
+bottom: 50px;
+mix-blend-mode: luminosity;
+/* box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+}
+
+.see {
+    position: absolute;
+width: 218px;
+height: 115px;
+left: 100px;
+top: 129px;
+
+font-family: 'Inter';
+font-style: italic;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+
+color: #552E1B;
+}
+
+.button {
+    position: absolute;
+width: 148px;
+height: 49px;
+left: 1076px;
+top: 154px;
+font-size: 15px;
+font-weight: 700;
+font-family: 'Inter';
+font-style: normal;
+border: none;
+cursor: pointer;
+background: #552E1B;
+color: white;
+transition: background 1.5s;
+transition: border 1.5s;
+transition: color 1.5s;
+}
+
+.button:hover {
+    background: #FEE2D1;
+    border: solid 1px black;
+    color: black;
+}
