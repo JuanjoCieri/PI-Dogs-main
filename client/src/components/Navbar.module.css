@@ -10,13 +10,20 @@
 .navAll {
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 
 .button {
     border: none;
     background: none;
-    color: #552E1B;
+    color: #BD5621;
     font-size: 2rem;
     cursor: pointer;
+    font-family: 'Kulim Park', sans-serif;
+    transition: font-size 1s;
     /* font-family: 'Bebas Neue', cursive; */
+}
+
+.button:hover {
+    font-size: 3rem;
 }

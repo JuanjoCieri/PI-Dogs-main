@@ -39,7 +39,9 @@ export default function Card ({id, name, image, temperaments, weightMax, weightM
             }(temperaments)}</h4>
             </div>
             <div className={styles.weight}>
-                <h4>Weight: {weightMin} - {weightMax} {weight}</h4>
+                {createdInDb ?
+                <h4>Weight: {weight} Kg</h4> :
+                <h4>Weight: {weightMin} - {weightMax} Kg</h4>}
             </div>
         </div>
     )

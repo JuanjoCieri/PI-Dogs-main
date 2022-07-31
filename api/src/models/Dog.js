@@ -38,6 +38,12 @@ module.exports = (sequelize) => {
         min: 0
       }
     },
+    weightMin: {
+      type: DataTypes.STRING
+    },
+    weightMax: {
+      type: DataTypes.STRING
+    },
     life_span: {
       type: DataTypes.STRING,
       validate: {

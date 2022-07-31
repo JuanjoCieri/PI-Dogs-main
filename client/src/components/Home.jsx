@@ -17,6 +17,7 @@ export default function Home () {
     const [order, setOrder] = useState("")
     const temperaments = useSelector((state) => state.allTemperaments)
     
+    console.log(dogState)
     
     useEffect(() => {
         dispatch(getAllTemperaments())
@@ -132,7 +133,7 @@ export default function Home () {
                     </Link>
                 ))}
             </div>
-            <div>
+            <div className={styles.paginated}>
                 <Paginated
                 DogsPerPage={DogsPerPage}
                 dogState={dogState.length}

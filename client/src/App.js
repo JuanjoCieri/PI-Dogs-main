@@ -16,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path={"/"} component={Landing}/>
           <Route exact path={"/home"} component={Home}/>
+          {/* <Route exact path={"/home/*"} component={Nothing}/> */}
           <Route exact path={"/form"} component={Form}/>
           <Route exact path={"/home/:id"} component={Detail}/>
           <Route exact path={"/about"} component={About}/>

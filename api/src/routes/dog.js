@@ -51,44 +51,6 @@ router.get('/:id', async (req, res) =>{
     }
 });
 
-
-// router.get("/:name", async (req, res) => {
-
-//     let { name } = req.query
-
-//     try {
-//         if (name) {
-//             let api = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
-//             const dogs = api.data.map((d) => {
-//             return {
-//                 id: d.id,
-//                 name: d.name,
-//                 image: d.image.url,
-//                 temperaments: d.temperament,
-//                 weightMin: parseInt(d.weight.imperial.split("-")[0]),
-//                 weightMax: parseInt(d.weight.imperial.split("-")[1]),
-//             }
-//         })
-//         let dogsDb = await Dog.findAll({
-//             include: {
-//                 model: Temperaments,
-//                 attributes: ["name"],
-//                 through: {
-//                     attributes:[]
-//                 }
-//             }
-//         })
-//         let all = dogsDb.concat(dogs)
-//         let dogBreed = await all.filter((el) =>
-//         el.name.toLowerCase().includes(name.toLowerCase())
-//       );
-//         return res.json(dogBreed)
-//         }
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-
 router.delete("/:id", async (req, res) => {
     let { id } = req.params
     // const dogDeleted = await Dog.find(dog => dog.id === id)

@@ -5,6 +5,7 @@ import { getDog, clearDetails } from "../redux/actions";
 import styles from "./Detail.module.css"
 import Navbar from "./Navbar";
 import Loading from "./Loading";
+import Nothing from "./Nothing";
 
 export default function Detail (props) {
 
@@ -29,11 +30,11 @@ export default function Detail (props) {
             <h1 className={styles.name}>{dog.name}</h1>
             <img className={styles.image} src={dog.image} alt="" width="200px"/>
             <h3 className={styles.temperaments}>Temperaments: {dog.temperament}</h3>
-            <h4 className={styles.height}>{dog.height} Cm</h4>
-            <h4 className={styles.height}>{dog.weight} {dog.weight_min} Kg</h4>
+            <h4 className={styles.height}>Height: {dog.height} Cm</h4>
+            <h4 className={styles.height}>Weight: {dog.weight} {dog.weight_min} Kg</h4>
             <h4 className={styles.life}>{dog.life_span}</h4>
         </div> :
-        <Loading/>
+        <Nothing/>
         }     
         </div>
     )
