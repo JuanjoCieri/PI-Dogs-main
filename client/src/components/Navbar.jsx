@@ -13,9 +13,9 @@ export default function Navbar () {
                 <Link to={"/form"}>
                     <button className={styles.button}>Create</button>
                 </Link>
-                <Link to={"/about"}>
+                {/* <Link to={"/about"}> */}
                     <button className={styles.button}>About</button>
-                </Link>
+                {/* </Link> */}
             </div>
         </div>
     )

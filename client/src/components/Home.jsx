@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 import styles from "./Home.module.css"
 import Navbar from "./Navbar";
 import Paginated from "./Paginated"
+import Loading from "./Loading"
 
 export default function Home () {
 
@@ -16,8 +17,6 @@ export default function Home () {
     const dispatch = useDispatch()
     const [order, setOrder] = useState("")
     const temperaments = useSelector((state) => state.allTemperaments)
-    
-    console.log(dogState)
     
     useEffect(() => {
         dispatch(getAllTemperaments())
@@ -90,7 +89,9 @@ export default function Home () {
 
     return (
         <div className={styles.all}>
-            <div className={styles.nav}>
+            {Object.entries(dogState).length === 0 ? (<Loading />) : (
+                <div className={styles.all}>
+                    <div className={styles.nav}>
                 <Navbar />
             </div>
             <div className={styles.searchBar}>
@@ -145,6 +146,8 @@ export default function Home () {
                 lastPag={lastPage}
                 ></Paginated>
             </div>
+                </div>
+            )}
         </div>
     )
 }

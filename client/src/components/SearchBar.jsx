@@ -19,6 +19,7 @@ export default function SearchBar () {
         e.preventDefault()
         dispatch(getDogByName(name))
         setName("")
+        
     }
        
     return (
