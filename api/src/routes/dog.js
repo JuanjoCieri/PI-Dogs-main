@@ -51,19 +51,4 @@ router.get('/:id', async (req, res) =>{
     }
 });
 
-router.delete("/:id", async (req, res) => {
-    let { id } = req.params
-    // const dogDeleted = await Dog.find(dog => dog.id === id)
-    try { 
-        await Dog.destroy({
-            where: {
-                id,
-            }
-        })
-        res.status(200).send("Eliminated correctly!")
-    } catch (error) {
-        console.log(error)
-    }
-})
-
 module.exports = router;

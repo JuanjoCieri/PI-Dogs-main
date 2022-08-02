@@ -90,11 +90,11 @@ const getApiDogs = async () => {
                 weightMin: d.weight.metric.split(' - ')[0] !== "NaN" ?
                 d.weight.metric.split(' - ')[0] :
                 (d.weight.metric.split(' - ')[1] ?
-                    Math.round(d.weight.metric.split(' - ')[1] * 0.6) :
-                    '30'),
+                Math.round(d.weight.metric.split(' - ')[1] * 0.6) :
+                '25'),
                 weightMax: d.weight.metric.split(' - ')[1] ?
                 d.weight.metric.split(' - ')[1] :
-                '39',
+                '33',
             }
         })
         return dogs
