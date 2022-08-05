@@ -24,17 +24,15 @@ router.get('/', async (req, res) =>{
                 if(e.name.toLowerCase().includes(name.toLowerCase())){
                     breeds.push({
                         id: e.id,
-                name: e.name,
-                image: e.image.url,
-                temperaments: e.temperament ? e.temperament : ["Not have :("],
-                weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
-                e.weight.metric.split(' - ')[0] :
-                (e.weight.metric.split(' - ')[1] ?
-                    Math.round(e.weight.metric.split(' - ')[1] * 0.6) :
-                    '30'),
-                weightMax: e.weight.metric.split(' - ')[1] ?
-                e.weight.metric.split(' - ')[1] :
-                '39',
+                        name: e.name,
+                        image: e.image.url,
+                        temperaments: e.temperament ? e.temperament : ["Not have :("],
+                        weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
+                        e.weight.metric.split(' - ')[0] :
+                        '30',
+                        weightMax: e.weight.metric.split(' - ')[1] ?
+                        e.weight.metric.split(' - ')[1] :
+                        '39',
                     })
                 }
             });
@@ -47,7 +45,7 @@ router.get('/', async (req, res) =>{
                 return res.send(breeds)
 
             }else {
-                const breedsDB = await Dog.findAll({where: {name: name}, include: [Temperaments]});
+                const breedsDB = await Dog.findAll({where: {name: {[Op.iLike]: name}}, include: [Temperaments]});
                 if(breedsDB){
                     res.send(breedsDB)
                 }
@@ -87,14 +85,12 @@ const getApiDogs = async () => {
                 name: d.name,
                 image: d.image.url,
                 temperaments: d.temperament ? d.temperament : "Not have :(",
-                weightMin: d.weight.metric.split(' - ')[0] !== "NaN" ?   
-                d.weight.metric.split(' - ')[0] :
-                (d.weight.metric.split(' - ')[1] ?
-                Math.round(d.weight.metric.split(' - ')[1] * 0.6) :
-                '25'),
-                weightMax: d.weight.metric.split(' - ')[1] ?
-                d.weight.metric.split(' - ')[1] :
-                '33',
+                weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
+                e.weight.metric.split(' - ')[0] :
+                '30',
+                weightMax: e.weight.metric.split(' - ')[1] ?
+                e.weight.metric.split(' - ')[1] :
+                '39',
             }
         })
         return dogs
@@ -111,7 +107,7 @@ router.post("/", async (req, res) => {
     } else {
         try {
             const dog = await Dog.create({
-                image: image,
+                image: image ? image : "https://www.pngitem.com/pimgs/m/144-1440970_black-and-white-dog-png-stock-free-dog.png",
                 name: name,
                 height: `${heightMin} - ${heightMax}`,
                 weight: `${weightMin} - ${weightMax}`,
