@@ -24,15 +24,17 @@ router.get('/', async (req, res) =>{
                 if(e.name.toLowerCase().includes(name.toLowerCase())){
                     breeds.push({
                         id: e.id,
-                        name: e.name,
-                        image: e.image.url,
-                        temperaments: e.temperament ? e.temperament : ["Not have :("],
-                        weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
-                        e.weight.metric.split(' - ')[0] :
-                        '30',
-                        weightMax: e.weight.metric.split(' - ')[1] ?
-                        e.weight.metric.split(' - ')[1] :
-                        '39',
+                name: e.name,
+                image: e.image.url,
+                temperaments: e.temperament ? e.temperament : ["Not have :("],
+                weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
+                e.weight.metric.split(' - ')[0] :
+                (e.weight.metric.split(' - ')[1] ?
+                    Math.round(e.weight.metric.split(' - ')[1] * 0.6) :
+                    '30'),
+                weightMax: e.weight.metric.split(' - ')[1] ?
+                e.weight.metric.split(' - ')[1] :
+                '39',
                     })
                 }
             });
@@ -85,12 +87,14 @@ const getApiDogs = async () => {
                 name: d.name,
                 image: d.image.url,
                 temperaments: d.temperament ? d.temperament : "Not have :(",
-                weightMin: e.weight.metric.split(' - ')[0] !== "NaN" ?
-                e.weight.metric.split(' - ')[0] :
-                '30',
-                weightMax: e.weight.metric.split(' - ')[1] ?
-                e.weight.metric.split(' - ')[1] :
-                '39',
+                weightMin: d.weight.metric.split(' - ')[0] !== "NaN" ?   
+                d.weight.metric.split(' - ')[0] :
+                (d.weight.metric.split(' - ')[1] ?
+                Math.round(d.weight.metric.split(' - ')[1] * 0.6) :
+                '25'),
+                weightMax: d.weight.metric.split(' - ')[1] ?
+                d.weight.metric.split(' - ')[1] :
+                '33',
             }
         })
         return dogs
