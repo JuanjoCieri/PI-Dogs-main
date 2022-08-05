@@ -25,8 +25,8 @@ router.get("/", async (req, res) => {
             temperament = await Temperaments.findAll()
         }
         return res.json(temperament)
-    } catch (error) {
-        console.log(error)
+    } catch (e) {
+        console.log(e)
     }
 
 })

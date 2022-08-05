@@ -39,15 +39,15 @@ router.get('/:id', async (req, res) =>{
                     }
                 }
                 catch(e){
-                    return res.status(404).send(`No dog founded for id ${id}`)
+                    console.log(e)
                 }
             }
         }
         catch(e){
-            res.status(404).send(e)
+            console.log(e)
         }
     }else{
-        res.status(404).send(`Error , ${id}`)
+        console.log("Error")
     }
 });
 

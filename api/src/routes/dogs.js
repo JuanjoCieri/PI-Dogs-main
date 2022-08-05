@@ -4,7 +4,6 @@ const { Dog, Temperaments } = require("../db.js")
 const router = Router()
 
 
-
 router.get('/', async (req, res) =>{
 
     let {name} = req.query;
@@ -38,24 +37,24 @@ router.get('/', async (req, res) =>{
                     })
                 }
             });
-            if (breeds.length>0){
-                const breedsDB = await Dog.findAll({where: {name: name}});
+            if (breeds.length > 0){
+                const breedsDB = await Dog.findAll({where: {name: name}, include: [Temperaments]});
                 if(breedsDB){
-                    let allBreeds = [...breeds,...breedsDB]
+                    let allBreeds = [...breeds , ...breedsDB]
                     return res.send(allBreeds)
                 }
                 return res.send(breeds)
 
             }else {
-                const breedsDB = await Dog.findAll({where: {name: name}});
+                const breedsDB = await Dog.findAll({where: {name: name}, include: [Temperaments]});
                 if(breedsDB){
                     res.send(breedsDB)
                 }
-                else return res.status(404).send(`No results found four your search (${name})`)
+                else return res.status(404).send(`No results found for your search ${name}`)
             }
         }
         catch(e){
-            console.log('Error',e)
+            console.log(e)
         }
     }
 });
@@ -87,7 +86,7 @@ const getApiDogs = async () => {
                 name: d.name,
                 image: d.image.url,
                 temperaments: d.temperament ? d.temperament : "Not have :(",
-                weightMin: d.weight.metric.split(' - ')[0] !== "NaN" ?
+                weightMin: d.weight.metric.split(' - ')[0] !== "NaN" ?   
                 d.weight.metric.split(' - ')[0] :
                 (d.weight.metric.split(' - ')[1] ?
                 Math.round(d.weight.metric.split(' - ')[1] * 0.6) :
@@ -98,8 +97,8 @@ const getApiDogs = async () => {
             }
         })
         return dogs
-    } catch (error) {
-        console.log(error)
+    } catch (e) {
+        console.log(e)
     }
 }
 
@@ -132,8 +131,8 @@ router.post("/", async (req, res) => {
             }
             res.send(dog)
             
-        } catch (error) {
-            console.log(error)
+        } catch (e) {
+            console.log(e)
         }
     }
 
