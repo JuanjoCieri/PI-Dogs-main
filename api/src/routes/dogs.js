@@ -2,6 +2,7 @@ const { Router } = require("express")
 const axios = require("axios")
 const { Dog, Temperaments } = require("../db.js")
 const router = Router()
+const { Op } = require("sequelize");
 
 
 router.get('/', async (req, res) =>{
@@ -38,7 +39,7 @@ router.get('/', async (req, res) =>{
                 }
             });
             if (breeds.length > 0){
-                const breedsDB = await Dog.findAll({where: {name: name}, include: [Temperaments]});
+                const breedsDB = await Dog.findAll({where: {name: {[Op.iLike]: name}}, include: [Temperaments]});
                 if(breedsDB){
                     let allBreeds = [...breeds , ...breedsDB]
                     return res.send(allBreeds)
